@@ -35,7 +35,7 @@ class Otto
     float getDistance(); //US sensor
 
     //-- Oscillator Trims
-    void setTrims(int YL, int YR, int RL, int RR);
+    void setTrims(int YL, int YR, int RL, int RR, int USTrigger, int USEcho);
 
     //-- Predetermined Motion Functions
     void _moveServos(int time, int  servo_target[]);

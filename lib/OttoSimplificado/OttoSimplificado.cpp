@@ -4,7 +4,7 @@
 #include <Oscillator.h>
 #include <US.h>
 
-void Otto::init(int YL, int YR, int RL, int RR) {
+void Otto::init(int YL, int YR, int RL, int RR, int USTrigger, int USEcho){
 
   servo_pins[0] = YL;
   servo_pins[1] = YR;
@@ -13,6 +13,8 @@ void Otto::init(int YL, int YR, int RL, int RR) {
 
   attachServos();
   isOttoResting=false;
+
+}
 
 ///////////////////////////////////////////////////////////////////
 //-- ATTACH & DETACH FUNCTIONS ----------------------------------//
