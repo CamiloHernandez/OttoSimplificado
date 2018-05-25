@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <OttoSimplificado.h>
+#include <US.h>
+#include <oscilaltor.h>
 
 void setup() {
     // put your setup code here, to run once:
