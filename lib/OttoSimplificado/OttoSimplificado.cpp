@@ -4,8 +4,6 @@
 #include <Oscillator.h>
 #include <US.h>
 
-
-
 void Otto::init(int YL, int YR, int RL, int RR) {
 
   servo_pins[0] = YL;
@@ -15,7 +13,6 @@ void Otto::init(int YL, int YR, int RL, int RR) {
 
   attachServos();
   isOttoResting=false;
-
 
 ///////////////////////////////////////////////////////////////////
 //-- ATTACH & DETACH FUNCTIONS ----------------------------------//
@@ -37,7 +34,7 @@ void Otto::detachServos(){
 ///////////////////////////////////////////////////////////////////
 //-- OSCILLATORS TRIMS ------------------------------------------//
 ///////////////////////////////////////////////////////////////////
-void Otto::setTrims(int YL, int YR, int RL, int RR) {
+void Otto::setTrims(int YL, int YR, int RL, int RR, int USTrigger, int USEcho) {
   servo[0].SetTrim(YL);
   servo[1].SetTrim(YR);
   servo[2].SetTrim(RL);
@@ -70,7 +67,6 @@ void Otto::_moveServos(int time, int  servo_target[]) {
   }
   for (int i = 0; i < 4; i++) servo_position[i] = servo_target[i];
 }
-
 
 void Otto::oscillateServos(int A[4], int O[4], int T, double phase_diff[4], float cycle=1){
 
@@ -107,8 +103,6 @@ void Otto::_execute(int A[4], int O[4], int T, double phase_diff[4], float steps
   //-- Execute the final not complete cycle
   oscillateServos(A,O, T, phase_diff,(float)steps-cycles);
 }
-
-
 
 ///////////////////////////////////////////////////////////////////
 //-- HOME = Otto at rest position -------------------------------//
@@ -482,4 +476,9 @@ void Otto::flapping(float steps, int T, int h, int dir){
 
   //-- Let's oscillate the servos!
   _execute(A, O, T, phase_diff, steps);
+}
+
+float Otto::getDistance(){
+
+  return us.read();
 }

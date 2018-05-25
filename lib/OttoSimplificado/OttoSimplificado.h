@@ -3,6 +3,7 @@
 
 #include <Servo.h>
 #include <Oscillator.h>
+#include <US.h>
 
 //-- Constants
 #define FORWARD     1
@@ -24,11 +25,14 @@ class Otto
   public:
 
     //-- Otto initialization
-    void init(int YL, int YR, int RL, int RR);
+    void init(int YL, int YR, int RL, int RR, int USTrigger=PIN_Trigger, int USEcho=PIN_Echo);
 
     //-- Attach & detach functions
     void attachServos();
     void detachServos();
+
+    //-- Sensors functions
+    float getDistance(); //US sensor
 
     //-- Oscillator Trims
     void setTrims(int YL, int YR, int RL, int RR);
@@ -62,6 +66,9 @@ class Otto
 
 
   private:
+
+    Oscillator servo[4];
+    US us;
 
     int servo_pins[4];
     int servo_trim[4];
